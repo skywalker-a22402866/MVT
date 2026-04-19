@@ -1,0 +1,32 @@
+{% extends "escola/base.html" %}
+
+{% block content %}
+
+<section>
+    <header>
+        <h2>Professores</h2>
+    </header>
+
+    {% for professor in professores %}
+        <article>
+            <h3>{{ professor.nome }}</h3>
+
+            <section>
+                <h4>Cursos</h4>
+                <ul>
+                    {% for curso in professor.cursos.all %}
+                        <li>{{ curso.nome }}</li>
+                    {% empty %}
+                        <li>Sem cursos</li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+        </article>
+    {% empty %}
+        <p>Sem professores</p>
+    {% endfor %}
+
+</section>
+
+{% endblock %}
